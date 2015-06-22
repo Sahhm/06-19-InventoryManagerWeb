@@ -1,0 +1,17 @@
+Update Product
+
+<h1> Current Inventory </h1>
+<ul>
+   <% Club.all_as_objects.each do |club| %>
+     <li>Store ID -<%= club.storeid %>    Club Code -<%=club.clubid%></li>
+   <% end %>
+</ul>
+
+
+<form action="/update_location">
+  <input type="numbers" placeholder="Enter Current Store ID" name = "oldstoreid">
+  <input type="text" placeholder="Enter Club Code" name = "clubid">
+  <input type="numbers" placeholder="Enter New Store ID" name = "storeid">
+  
+  <input type="submit">
+</form>

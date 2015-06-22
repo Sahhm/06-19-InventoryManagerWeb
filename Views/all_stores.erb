@@ -1,0 +1,8 @@
+All Stores
+
+<ul>
+   <% Store.all_as_objects.each do |club| %>
+     <li>Store ID -<%= club.id %>  Location -<%=club.location%></li>
+   <% end %>
+</ul>
+     
