@@ -53,6 +53,17 @@ get "/save_clubs" do
   erb :"clubs_added"
 end
 
+get "/add_store_form" do
+  erb :"add_store_form"
+end
+
+get "/add_store" do
+   Store.new_location(params["location"])
+  
+  erb :"add_store"
+end
+
+
 
 get "/update_location_form" do
   erb :"update_location_form"
@@ -64,18 +75,21 @@ get "/update_location" do
   
  erb :"update_location"
   
- 
- 
-
 end
 
 
+get "/all_stores" do
+  erb :"all_stores"
+end
+
+get "/all_clubs" do
+  erb :"all_clubs"
+end
 
 
- 
-
-
-
+get "/all_clubcodes" do
+  erb :"all_clubcodes"
+end
 
 
 

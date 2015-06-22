@@ -1,1 +1,10 @@
 All Clubcodes
+
+<ul>
+   <% ClubCode.all_as_objects.each do |club| %>
+     <li>Club Code -<%=club.clubid %> Club Type -<%=club.clubtype%> Brand -<%=club.brand%></li>
+   <% end %>
+</ul>
+<ul>
+  <a href="/home">Home</a>
+</ul>

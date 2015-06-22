@@ -1,1 +1,11 @@
 All Clubs
+
+<ul>
+   <% Club.all_as_objects.each do |club| %>
+     <li>Store ID -<%= club.storeid %>  Club Code -<%=club.clubid%>  Quantity -<%=club.quantity%>  Price -<%=club.price%></li>
+   <% end %>
+</ul>
+
+<ul>
+  <a href="/home">Home</a>
+</ul>
