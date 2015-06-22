@@ -37,17 +37,26 @@ class Club
 
 
   #method inserts new inventory into the clubs table
-  # def add_to_database(store, club, quant, pri)
-  #   results = Club.add
-  #
-  #   results_as_objects = []
-  #
-  #   storeid = CONNECTION.last_insert_row_id
-  #
-  #   Club.new(storeid, clubid, quantity, price)
-  #
-  #
-  # end
+  def add_to_database(store, club, quant, pri)
+    
+    
+    CONNECTION.execute("INSERT INTO clubs (storeid, clubid, price, quantity) VALUES (#{store}, '#{club}', #{quant}, #{pri});")
+    
+    
+    
+    
+    
+    ##Code for method .add that I haven't been able to get to work
+    # results = Club.add
+ #
+ #    results_as_objects = []
+ #
+ #    storeid = CONNECTION.last_insert_row_id
+ #
+ #    Club.new(storeid, clubid, quantity, price)
+
+
+  end
 
   #method updates a current inventory listing with new quantity and price information
   def self.change_record(sid, club, new_quantity, new_price)

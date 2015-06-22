@@ -31,15 +31,13 @@ def initialize(type_options={})
   end
   
   #method allows users to generate new club codes if Brand and club type are given.
-  # def self.add(code, clubtype, brand)
-#     CONNECTION.execute("INSERT INTO clubcodes (clubid, clubtype, brand) VALUES ('#{code}', '#{clubtype}', '#{brand}');")
-#
-#
-#     club_id = CONNECTION.last_insert_row_id
-#
-#ClubCode.new(code, clubtype, brand)
-  
- # end
+  def add_to_database(code, clubtype, brand)
+     CONNECTION.execute("INSERT INTO clubcodes (clubid, clubtype, brand) VALUES ('#{code}', '#{clubtype}', '#{brand}');")
+  end
+ 
+
+
+
   
   ##Code that needs worked on
  # def field_value(name_of_field)

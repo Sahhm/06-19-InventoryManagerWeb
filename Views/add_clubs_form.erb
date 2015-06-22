@@ -1,0 +1,25 @@
+Add Clubs
+
+<form action="/add_clubs">
+  <select name="store_id">
+    <% Store.all_as_objects.each do |club| %>
+      <option value="<%= club.id %>"><%= club.location %></option>
+    <% end %>
+  </select>
+  <select name="club_id">
+    <% ClubCode.all_as_objects.each do |club| %>
+      <option value="<%= club.clubid %>"><%= club.clubid %></option>
+    <% end %>
+  </select>
+
+  <input type="numbers" placeholder="Enter Quantity" name = "quant">
+  <input type="numbers" placeholder="Enter Price" name = "pri">
+  
+
+
+
+  
+
+   <br> 
+  <input type="submit">
+</form>

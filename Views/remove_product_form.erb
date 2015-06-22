@@ -1,4 +1,4 @@
-Change Product Location
+Delete a Product Record
 
 <h1> Current Inventory </h1>
 <ul>
@@ -7,7 +7,7 @@ Change Product Location
    <% end %>
 </ul>
 
-<form action="/update_location">
+<form action="/remove_product">
  <p1>What is the Store ID of the product currently?</p1>
   <select name="old_store">
     <% Club.all_as_objects.each do |club| %>
@@ -15,18 +15,13 @@ Change Product Location
     <% end %>
   </select>
     <br>
-  <p2>What is the Club Code of the product you wish to move?</p2>
+  <p2>What is the Club Code of the product you wish to remvoe?</p2>
     <select name="club_id">
       <% Club.all_as_objects.each do |club| %>
         <option value="<%= club.clubid %>"><%= club.clubid %></option>
         
       <% end %>
     </select>
-      <br>
-  <p3>What is the new Store ID?</p3>
-   <input type="numbers" placeholder="Enter New Store ID" name = "new_store">
-  
-  
   
 
    <br> 

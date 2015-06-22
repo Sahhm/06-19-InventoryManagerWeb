@@ -1,7 +1,7 @@
 
+require "pry"
 require "sinatra"
 require "sinatra/reloader"
-
 require "sqlite3"
 
 
@@ -16,15 +16,13 @@ require_relative "clubs.rb"
 
 
 
-CONNECTION.execute("DROP TABLE IF EXISTS stores;")
-CONNECTION.execute("DROP TABLE IF EXISTS clubcodes;")
 CONNECTION.execute("CREATE TABLE IF NOT EXISTS stores (id INTEGER PRIMARY KEY, location VARCHAR(40)); ")
 
 CONNECTION.execute("CREATE TABLE IF NOT EXISTS clubcodes (clubid VARCHAR(5), clubtype VARCHAR(40), brand VARCHAR(40)); ")
 
 CONNECTION.execute("CREATE TABLE IF NOT EXISTS clubs (storeid INTEGER, clubid VARCHAR(5), price FLOAT, quantity INTEGER); ")
 
-require_relative "database.rb"
+
 #Gives user choice of which function to run
 # puts "What would you like to do? "
 # puts "(s)ee all stores listed, club codes and clubs in stock?"
@@ -40,18 +38,56 @@ get "/home" do
   erb :"home"
 end
 
+
+get "/add_clubs_form" do
+  erb :"add_clubs_form"
+end
+
+
 get "/add_clubs" do
+  
+  
+  club_object = Club.new
+  
+  
+  club_object.add_to_database(params["store_id"].to_i, params["club_id"], params["pri"].to_f, params["quant"].to_i)
+  
   erb :"add_clubs"
 end
 
-get "/save_clubs" do
+
+get "/add_clubcodes_form" do
+ 
+
   
-  club_object = Club.new({"storeid" => params["storeid"], "clubid" => params["clubid"], "quantity" => params["quantity"].to_i, "price" => params["price"].to_f})
-  club_object.add
+
   
-  #still need to add this erb
-  erb :"clubs_added"
+  erb :"add_clubcodes_form"
 end
+
+
+get "/add_clubcodes" do
+ 
+
+  code = params["brand"][0]+params["brand"][1]+params["club_type"][0]
+  
+  code = code.upcase
+  
+  object = ClubCode.new
+  object.add_to_database(code, params["club_type"], params["brand"])
+  
+  
+  erb :"add_clubcodes"
+end
+
+# get "/save_clubs" do
+#
+#   club_object = Club.new({"storeid" => params["storeid"], "clubid" => params["clubid"], "quantity" => params["quantity"].to_i, "price" => params["price"].to_f})
+#   club_object.add
+#
+#   #still need to add this erb
+#   erb :"clubs_added"
+# end
 
 get "/add_store_form" do
   erb :"add_store_form"
@@ -63,6 +99,22 @@ get "/add_store" do
   erb :"add_store"
 end
 
+get "/remove_product_form" do
+  
+  erb :"remove_product_form"
+end
+
+get "/remove_product" do
+  Club.delete_record(params["old_store"], params["club_id"])
+  
+  
+  erb :"remove_product"
+end
+
+
+
+
+
 
 
 get "/update_location_form" do
@@ -71,7 +123,9 @@ end
 
 
 get "/update_location" do
-  Club.change_location(params["oldstoreid"].to_i, params["clubid"], params["storeid"].to_i)
+
+  
+  Club.change_location(params["old_store"].to_i, params["club_id"], params["new_store"].to_i)
   
  erb :"update_location"
   

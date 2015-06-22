@@ -8,11 +8,6 @@
 
 
 
-CONNECTION.execute("INSERT INTO  stores (location) VALUES ('Omaha');")
-CONNECTION.execute("INSERT INTO  stores (location) VALUES ('Millard');")
-CONNECTION.execute("INSERT INTO  stores (location) VALUES ('Lincoln');")
-CONNECTION.execute("INSERT INTO  stores (location) VALUES ('Elkhorn');")
-
 
 CONNECTION.execute(" INSERT INTO  clubcodes (clubid, clubtype, brand) VALUES ('TID', 'Driver', 'TITELIST');")
 CONNECTION.execute(" INSERT INTO  clubcodes (clubid, clubtype, brand) VALUES ('TII', 'Irons', 'TITELIST');")

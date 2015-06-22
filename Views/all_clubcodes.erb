@@ -1,8 +1,8 @@
 All Clubcodes
 
 <ul>
-   <% ClubCode.all_as_objects.each do |club| %>
-     <li>Club Code -<%=club.clubid %> Club Type -<%=club.clubtype%> Brand -<%=club.brand%></li>
+   <% ClubCode.all_as_objects.each do |code| %>
+     <li>Club Code -<%=code.clubid %> Club Type -<%=code.clubtype%> Brand -<%=code.brand%></li>
    <% end %>
 </ul>
 <ul>
