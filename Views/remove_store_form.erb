@@ -1,0 +1,13 @@
+Remove a Store Location
+
+<form action="/remove_store">
+  <select name="store_id">
+    <% Store.all_as_objects.each do |club| %>
+      <option value="<%= club.id %>"><%= club.location %></option>
+    <% end %>
+  </select>
+<br> 
+
+ 
+      <input type="submit">
+</form>

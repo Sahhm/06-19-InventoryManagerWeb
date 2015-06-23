@@ -1,0 +1,17 @@
+Which store's inventory would you like to see?
+
+<ul>
+   <% Store.all_as_objects.each do |store| %>
+     <li>Store ID -<%= store.id %>  Location -<%=store.location%></li>
+   <% end %>
+</ul>
+
+<form action="/show_single_store">
+  <select name="store_id">
+    <% Store.all_as_objects.each do |club| %>
+      <option value="<%= club.id %>"><%= club.id %></option>
+    <% end %>
+  </select>
+  
+    <input type="submit">
+  </form>

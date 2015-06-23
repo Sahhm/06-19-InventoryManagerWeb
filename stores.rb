@@ -51,7 +51,7 @@ def initialize(store_options={})
     if result == []
       CONNECTION.execute("DELETE FROM stores WHERE id = #{sid};")
     else
-      puts "This location cannot be removed until it has no inventory"
+      false
     end
   end
   

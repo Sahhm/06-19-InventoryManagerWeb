@@ -1,0 +1,10 @@
+
+    
+<ul>
+  <% Club.all_as_objects.each do |club| %>
+
+    <%if club.storeid == params["store_id"].to_i%>
+      <li>Store ID -<%= club.storeid %>  Club Code -<%=club.clubid%>  Quantity -<%=club.quantity%>  Price -<%=club.price%></li>
+    <% end %>
+  <% end %>
+</ul>

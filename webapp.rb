@@ -32,7 +32,7 @@ CONNECTION.execute("CREATE TABLE IF NOT EXISTS clubs (storeid INTEGER, clubid VA
 # puts "(c)hange a product's location? (d)elete a product's records?"
 # puts "(r)emove a location? (q)uit"
 
-# input = gets.chomp.downcase
+
 
 get "/home" do
   erb :"home"
@@ -58,13 +58,8 @@ end
 
 get "/add_clubcodes_form" do
  
-
-  
-
-  
   erb :"add_clubcodes_form"
 end
-
 
 get "/add_clubcodes" do
  
@@ -79,6 +74,42 @@ get "/add_clubcodes" do
   
   erb :"add_clubcodes"
 end
+
+get "/remove_store_form" do
+  erb :"remove_store_form"
+  
+end
+
+get "/remove_store" do
+  
+  if Store.remove_location(params["store_id"])
+    erb :"remove_store"
+  else
+    erb :"store_remove_fail"
+  end
+ 
+  # if result == []
+ #    CONNECTION.execute("DELETE FROM stores WHERE id = #{sid};")
+ #  else
+ #    puts "This location cannot be removed until it has no inventory"
+ #  end
+  
+  
+end
+
+get "/single_store" do
+  erb :"single_store"
+  
+end
+
+get "/show_single_store" do
+  
+  
+  @this_store = Club.find(params["store_id"])
+  
+  erb :"show_single_store"
+end
+
 
 # get "/save_clubs" do
 #
